@@ -361,6 +361,7 @@ export function BrandProductGrid() {
         // Moto E Series
         { name: `Moto E14 - 64GB`, category: 'smartphone', price: '6,999', originalPrice: '8,999', discount: '22% off' }
       ]
+    };
 
     const templates = productTemplates[brand as keyof typeof productTemplates] || [
       { name: `${brand} Product 1`, category: 'smartphone', price: '29,999', originalPrice: '34,999', discount: '14% off' },
