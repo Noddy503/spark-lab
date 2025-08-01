@@ -1,7 +1,19 @@
 import { Globe } from "lucide-react";
 import { Button } from "./ui/button";
+import { useBrandContext } from "../context/BrandContext";
+import { useSearch } from "../hooks/useSearch";
 
 export function Header() {
+  const { clearBrandSelection } = useBrandContext();
+  const { clearSearch } = useSearch();
+
+  const handleLogoClick = () => {
+    // Clear any active brand selection
+    clearBrandSelection();
+    // Clear any active search
+    clearSearch();
+    // This will automatically navigate to homepage due to the conditional rendering in Index.tsx
+  };
   return (
     <header className="w-full bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
@@ -19,7 +31,10 @@ export function Header() {
 
         {/* Center - OnlineShop AI Logo */}
         <div className="flex items-center">
-          <div className="text-center">
+          <div
+            className="text-center cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={handleLogoClick}
+          >
             <h1 className="text-2xl md:text-4xl font-bold">
               <span className="text-blue-500">OnlineShop AI</span>
             </h1>
