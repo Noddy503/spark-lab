@@ -5,6 +5,7 @@ import { handlePlaceholder } from "./routes/placeholder";
 import { handleProductComparison, handleAllProducts, handleRetailerPrices } from "./routes/products";
 import { handleSearch, handleSearchSuggestions } from "./routes/search";
 import { handleTrendingProducts, handleTrendingByRetailer } from "./routes/trending";
+import { handleScrapeRealTimePrices, handleBulkPriceScraping, handlePriceMonitoring } from "./routes/realTimePricing";
 
 export function createServer() {
   const app = express();
@@ -36,6 +37,11 @@ export function createServer() {
   // Trending products routes
   app.get("/api/trending", handleTrendingProducts);
   app.get("/api/trending/retailer", handleTrendingByRetailer);
+
+  // Real-time pricing routes
+  app.get("/api/scrape-prices", handleScrapeRealTimePrices);
+  app.post("/api/bulk-scrape", handleBulkPriceScraping);
+  app.post("/api/price-monitoring", handlePriceMonitoring);
 
   return app;
 }
